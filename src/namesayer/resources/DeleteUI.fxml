@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="namesayer.DeleteUIController">
+   <children>
+      <HBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox stylesheets="@stylesheet/NamesayerStyle.css">
+               <children>
+                  <JFXButton fx:id="playButton" buttonType="RAISED" onAction="#playCreation" prefHeight="60.0" prefWidth="200.0" stylesheets="@stylesheet/NamesayerStyle.css" text="Play">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="createButton" buttonType="RAISED" onAction="#createCreation" prefHeight="60.0" prefWidth="200.0" stylesheets="@stylesheet/NamesayerStyle.css" text="Create">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="deleteButton" buttonType="RAISED" prefHeight="60.0" prefWidth="200.0" stylesheets="@stylesheet/NamesayerStyle.css" text="Delete">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="quitButton" buttonType="RAISED" onAction="#quitNamesayer" prefHeight="60.0" prefWidth="200.0" stylesheets="@stylesheet/NamesayerStyle.css" text="Quit">
+                     <VBox.margin>
+                        <Insets top="150.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <Pane fx:id="viewPane" prefHeight="500.0" prefWidth="520.0">
+               <children>
+                  <VBox prefHeight="500.0" prefWidth="520.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="520.0" text="Delete Creations">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="deleteLabel" alignment="CENTER" prefHeight="20.0" prefWidth="520.0" text="Select creation to DELETE:" />
+                        <ListView fx:id="deleteListView" onMouseClicked="#deleteSelectedCreation" prefHeight="410.0" prefWidth="480.0">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin></ListView>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
