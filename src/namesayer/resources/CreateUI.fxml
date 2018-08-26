@@ -11,7 +11,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="namesayer.CreateUIController">
+<AnchorPane fx:id="mainPane" prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="namesayer.CreateUIController">
    <children>
       <HBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -49,7 +49,7 @@
                            </font>
                         </Label>
                         <Label fx:id="playLabel" alignment="CENTER" prefHeight="20.0" prefWidth="520.0" text="Enter fullname and click create to CREATE:" />
-                        <JFXTextField fx:id="createTextField" focusColor="#3949ab" onAction="#createCreation" opacity="0.63" promptText="enter fullname: ($,/,\,&quot; characters not allowed)" unFocusColor="#3f51b5">
+                        <JFXTextField fx:id="createTextField" focusColor="#3949ab" onAction="#createCreation" opacity="0.63" promptText="enter fullname: ($,/,\,&quot;,' characters not allowed)" unFocusColor="#3f51b5">
                            <VBox.margin>
                               <Insets left="75.0" right="75.0" top="25.0" />
                            </VBox.margin>

@@ -1,5 +1,9 @@
 package namesayer;
 
+/**
+ * ImageList: Provides functionality of getting the thumbnail image and its labeled creation name. Mainly used for viewLists.
+ * AUTHOR: Eric Leung
+ */
 public class ImageList {
 
     private String image;

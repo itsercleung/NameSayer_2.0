@@ -12,15 +12,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * NamesayerController - Initial UI menu screen, which has all available features of name sayer buttons, and introductory
+ * description and overall presentation.
+ * AUTHOR: Eric Leung
+ */
 public class NamesayerController implements Initializable {
 
     @FXML
     private AnchorPane mainPane;
-    @FXML
-    private JFXTextArea namesayerTextArea;
 
     private NamesayerApp namesayerApp = new NamesayerApp();
 
+    //Play creation event to go into PLAY UI
     @FXML
     void playCreation(ActionEvent event) {
         //Load Play pane
@@ -33,6 +37,7 @@ public class NamesayerController implements Initializable {
         mainPane.getChildren().setAll(playPane);
     }
 
+    //Create creation event to go into CREATE UI
     @FXML
     void createCreation(ActionEvent event) {
         //Load Play pane
@@ -45,6 +50,7 @@ public class NamesayerController implements Initializable {
         mainPane.getChildren().setAll(createPane);
     }
 
+    //Delete creation event to go into DELETE UI
     @FXML
     void deleteCreation(ActionEvent event) {
         //Load Delete pane
@@ -57,6 +63,7 @@ public class NamesayerController implements Initializable {
         mainPane.getChildren().setAll(deletePane);
     }
 
+    //Quit creation event to go into QUIT UI
     @FXML
     void quitNamesayer(ActionEvent event) {
         Task taskQuit = new Task<Void>() {
@@ -69,6 +76,7 @@ public class NamesayerController implements Initializable {
         new Thread (taskQuit).start();
     }
 
+    //Initialize creation data folders including videoOnly and audioOnly folders
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -78,11 +86,11 @@ public class NamesayerController implements Initializable {
                 "    fi";
         String videoAudioFolder = "if [[ ! -d creationData/videoOnly || ! -d creationData/audioOnly ]]; then\n" +
                 "        cd creationData/\n" +
-                "        if [[ ! -d creationData/videoOnly ]]; then\n" +
-                "            mkdir -p ./videoOnly\n" +
+                "        if [[ ! -d videoOnly ]]; then\n" +
+                "            mkdir -p creationData/videoOnly\n" +
                 "        fi\n" +
-                "        if [[ ! -d creationData/audioOnly ]]; then\n" +
-                "            mkdir -p ./audioOnly\n" +
+                "        if [[ ! -d audioOnly ]]; then\n" +
+                "            mkdir -p creationData/audioOnly\n" +
                 "        fi\n" +
                 "        cd ..\n" +
                 "    fi";

@@ -22,6 +22,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * PlayUIController - Controller for initiating Play feature (supplying view of creations, thumbnails and label for
+ * such creations and asking if user wants to play this certain creation).
+ * AUTHOR: Eric Leung
+ */
 public class PlayUIController implements Initializable {
 
     @FXML
@@ -29,13 +34,14 @@ public class PlayUIController implements Initializable {
     @FXML
     private JFXButton playButton;
     @FXML
-    private ListView < ImageList > playListView;
+    private ListView <ImageList> playListView;
     @FXML
     private MediaView playMedia;
 
     private NamesayerApp namesayerApp = new NamesayerApp();
-    private ObservableList < ImageList > data;
+    private ObservableList <ImageList> data;
 
+    //Create creation event to go into CREATE UI
     @FXML
     void createCreation(ActionEvent event) {
         //Load Play pane
@@ -48,6 +54,7 @@ public class PlayUIController implements Initializable {
         mainPane.getChildren().setAll(createPane);
     }
 
+    //Delete creation event to go into DELETE UI
     @FXML
     void deleteCreation(ActionEvent event) {
         //Load Delete pane
@@ -60,6 +67,7 @@ public class PlayUIController implements Initializable {
         mainPane.getChildren().setAll(deletePane);
     }
 
+    //Quit creation event to go into QUIT UI
     @FXML
     void quitNamesayer(ActionEvent event) {
         Task taskQuit = new Task<Void>() {
@@ -72,6 +80,8 @@ public class PlayUIController implements Initializable {
         new Thread (taskQuit).start();
     }
 
+    //When user clicks onto playListView which is found in initialized, we can select which one they've picked and plays
+    //video in MediaView automatically
     @FXML
     void playSelectedCreation(MouseEvent event) {
         String fileName = playListView.getSelectionModel().selectedItemProperty().toString();
@@ -94,6 +104,8 @@ public class PlayUIController implements Initializable {
         player.play();
     }
 
+    //Initializing playlistView (which finds all valid creations in directory, initialise thumbnails of the videos, then
+    //display thumbnails and its labels within the deleteListView.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         playButton.setDisable(true); //Disable play button

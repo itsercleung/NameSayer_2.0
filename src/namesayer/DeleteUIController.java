@@ -19,6 +19,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * DeleteUIController - Controller for initiating Delete feature (supplying view of creations, thumbnails and label for
+ * such creations and asking if user wants to delete this certain creation).
+ * AUTHOR: Eric Leung
+ */
 public class DeleteUIController implements Initializable {
 
     @FXML
@@ -26,11 +31,12 @@ public class DeleteUIController implements Initializable {
     @FXML
     private JFXButton deleteButton;
     @FXML
-    private ListView < ImageList > deleteListView;
+    private ListView <ImageList> deleteListView;
 
     private NamesayerApp namesayerApp = new NamesayerApp();
-    private ObservableList < ImageList > data;
+    private ObservableList <ImageList> data;
 
+    //Create creation event to go into CREATE UI
     @FXML
     void createCreation(ActionEvent event) {
         //Load Play pane
@@ -43,6 +49,7 @@ public class DeleteUIController implements Initializable {
         mainPane.getChildren().setAll(createPane);
     }
 
+    //Play creation event to go into PLAY UI
     @FXML
     void playCreation(ActionEvent event) {
         //Load Play pane
@@ -55,6 +62,7 @@ public class DeleteUIController implements Initializable {
         mainPane.getChildren().setAll(playPane);
     }
 
+    //Quit creation event to allow for QUIT Application
     @FXML
     void quitNamesayer(ActionEvent event) {
         Task taskQuit = new Task<Void>() {
@@ -67,13 +75,15 @@ public class DeleteUIController implements Initializable {
         new Thread (taskQuit).start();
     }
 
+    //When user clicks onto deleteListView which is found in initialized, we can select which one they've picked and gives a
+    //pop up to ask if they want to delete or not.
     @FXML
     void deleteSelectedCreation(MouseEvent event) {
         String fileName = deleteListView.getSelectionModel().selectedItemProperty().toString();
         fileName = (fileName.substring(fileName.lastIndexOf(" "), fileName.length() - 5).replaceAll("\\s+", ""));
 
         //Display pop up confirmation menu when user selects cell
-        Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Delete creation " + fileName + " ?", ButtonType.NO, ButtonType.YES);
+        Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Delete creation {" + fileName + "} ?", ButtonType.NO, ButtonType.YES);
         confirmDelete.showAndWait();
 
         //If Confirmed, delete cell
@@ -96,6 +106,8 @@ public class DeleteUIController implements Initializable {
         }
     }
 
+    //Initializing deletelistView (which finds all valid creations in directory, initialise thumbnails of the videos, then
+    //display thumbnails and its labels within the deleteListView.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         deleteButton.setDisable(true); //Disable delete button
